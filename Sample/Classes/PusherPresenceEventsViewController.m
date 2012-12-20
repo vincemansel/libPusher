@@ -43,7 +43,9 @@
   self.toolbarItems = [NSArray arrayWithObjects:newClientButtonItem, disconnectClientButtonItem, nil];
   
   // configure the auth URL for private/presence channels
-  self.pusher.authorizationURL = [NSURL URLWithString:@"http://localhost:9292/presence/auth"];
+  // self.pusher.authorizationURL = [NSURL URLWithString:@"http://localhost:9292/presence/auth"];
+  self.pusher.authorizationURL = [NSURL URLWithString:[AUTH_URL stringByAppendingString: @"/presence/auth"]];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated

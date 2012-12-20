@@ -41,7 +41,9 @@
   self.toolbarItems = [NSArray arrayWithObject:newEventButtonItem];
   
   // configure the auth URL for private/presence channels
-  self.pusher.authorizationURL = [NSURL URLWithString:@"http://localhost:9292/presence/auth"];
+  // self.pusher.authorizationURL = [NSURL URLWithString:@"http://localhost:9292/presence/auth"];
+  self.pusher.authorizationURL = [NSURL URLWithString:[AUTH_URL stringByAppendingString: @"/presence/auth"]];
+
   
   [self subscribeToChannel:@"messages"];
 }

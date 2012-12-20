@@ -16,7 +16,7 @@
 #import "Reachability.h"
 
 // All events will be logged
-#define kLOG_ALL_EVENTS
+#define kLOG_ALL_EVENTS YES
 
 // change this to switch between secure/non-secure connections
 #define kUSE_ENCRYPTED_CHANNELS NO
@@ -139,10 +139,14 @@
    This demonstrates how we can intercept the authorization request to configure it for our app's
    authentication/authorisation needs.
  */
+
+#define CHANNEL_AUTH_USERNAME @"admin"
+#define CHANNEL_AUTH_PASSWORD @"letmein"
+
 - (void)pusher:(PTPusher *)pusher willAuthorizeChannelWithRequest:(NSMutableURLRequest *)request
 {
-  NSLog(@"[pusher-%@] Authorizing channel access...", pusher.connection.socketID);
-  [request setHTTPBasicAuthUsername:CHANNEL_AUTH_USERNAME password:CHANNEL_AUTH_PASSWORD];
+    NSLog(@"[pusher-%@] Authorizing channel access...", pusher.connection.socketID);
+    [request setHTTPBasicAuthUsername:CHANNEL_AUTH_USERNAME password:CHANNEL_AUTH_PASSWORD];
 }
 
 @end

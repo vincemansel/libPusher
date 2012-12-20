@@ -23,7 +23,9 @@ describe(@"Subscribing to a private channel", ^{
     client = newTestClient();
     
     // this requires the auth server to be running (rake authserver:start)
-    client.authorizationURL = [NSURL URLWithString:@"http://localhost:9292/private/auth"];
+    //client.authorizationURL = [NSURL URLWithString:@"http://localhost:9292/private/auth"];
+    client.authorizationURL = [NSURL URLWithString:[AUTH_URL stringByAppendingString: @"/private/auth"]];
+
   });
   
   afterAll(^{
@@ -87,7 +89,9 @@ describe(@"Subscribing to multiple private channels with delays (see issue #26)"
     client = newTestClient();
     
     // this requires the auth server to be running (rake authserver:start)
-    client.authorizationURL = [NSURL URLWithString:@"http://localhost:9292/private/slowauth"];
+    // client.authorizationURL = [NSURL URLWithString:@"http://localhost:9292/private/slowauth"];
+    client.authorizationURL = [NSURL URLWithString:[AUTH_URL stringByAppendingString: @"/private/slowauth"]];
+
   });
   
   afterAll(^{
